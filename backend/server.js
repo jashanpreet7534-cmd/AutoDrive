@@ -3,19 +3,21 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const db = require("./db");
 
+// ✅ ALL requires FIRST
+const authRoute    = require("./routes/auth");
+const bookingRoute = require("./routes/booking");
+const carsRoute    = require("./routes/cars");
+const sellRoute    = require("./routes/sell");
+
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use("/uploads", express.static("uploads"));
 
-// Routes
-const authRoute    = require("./routes/auth");
-const bookingRoute = require("./routes/booking");
-const carsRoute    = require("./routes/cars");
-const sellRoute    = require("./routes/sell");
-
+// ✅ Routes ONCE (you had them twice before)
 app.use("/api/auth",     authRoute);
 app.use("/api/bookings", bookingRoute);
 app.use("/api/cars",     carsRoute);
@@ -66,6 +68,12 @@ app.patch("/api/sell/:id/status", (req, res) => {
 });
 
 app.get("/test", (req, res) => res.send("Backend is running"));
+
+// ✅ Error handler LAST
+app.use((err, req, res, next) => {
+  console.error("SERVER ERROR:", err);
+  res.status(500).json({ success: false, message: err.message });
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

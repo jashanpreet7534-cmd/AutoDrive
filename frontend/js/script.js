@@ -297,7 +297,7 @@ async function loginUser() {
   setLoading(btnId, true);
 
   try {
-    const res = await fetch(" https://autodrive-75rh.onrender.com/api/auth/login", {
+    const res = await fetch("https://autodrive-75rh.onrender.com/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
@@ -425,7 +425,7 @@ async function registerUser() {
   setLoading(btnId, true);
 
   try {
-    const res = await fetch(" https://autodrive-75rh.onrender.com/api/auth/register", {
+    const res = await fetch("https://autodrive-75rh.onrender.com/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, phone, password })
@@ -535,7 +535,7 @@ function initAuthUI() {
 /* 5a. loadCars --------------------------------------------- */
 async function loadCars() {
   try {
-    const response = await fetch(" https://autodrive-75rh.onrender.com/api/cars");
+    const response = await fetch("https://autodrive-75rh.onrender.com/api/cars");
     const cars     = await response.json();
 
     allCars = cars;
@@ -619,8 +619,8 @@ function displayCars(cars) {
     container.innerHTML += `
       <div class="car-card" data-type="${(car.type || "").toLowerCase()}" data-price="${car.price}">
         <div class="car-card-img-wrap">
-          <img src="../${car.image}" alt="${car.name}" onerror="this.src='images/placeholder.png'">
-          <button class="save-car-btn ${isSaved ? 'saved' : ''}" onclick="toggleSaveCar(this, '${safeName}', '${car.year || 'N/A'}', '${car.type || 'Car'}', '${car.fuel || 'Petrol'}', '${car.price}', '../${car.image}')" title="${isSaved ? 'Remove from saved' : 'Save car'}">
+          <img src="https://autodrive-75rh.onrender.com/${car.image}" alt="${car.name}" onerror="this.src='images/placeholder.png'">
+          <button class="save-car-btn ${isSaved ? 'saved' : ''}" onclick="toggleSaveCar(this, '${safeName}', '${car.year || 'N/A'}', '${car.type || 'Car'}', '${car.fuel || 'Petrol'}', '${car.price}', 'https://autodrive-75rh.onrender.com/${car.image}')" title="${isSaved ? 'Remove from saved' : 'Save car'}">
             <svg viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
             </svg>
@@ -931,7 +931,7 @@ function initBookingForm() {
     if (!validateBookingForm(data)) return;
 
     try {
-      const res    = await fetch(" https://autodrive-75rh.onrender.com/api/bookings", {
+      const res    = await fetch("https://autodrive-75rh.onrender.com/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -1476,7 +1476,7 @@ function initSellForm() {
     };
 
     try {
-      const res  = await fetch(" https://autodrive-75rh.onrender.com/api/sell", {
+      const res  = await fetch("https://autodrive-75rh.onrender.com/api/sell", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -1908,7 +1908,7 @@ function saveProfilePanel() {
 
   // Also update password on backend so next login works
   if (newPass) {
-    fetch(' https://autodrive-75rh.onrender.com/api/auth/change-password', {
+    fetch('https://autodrive-75rh.onrender.com/api/auth/change-password', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: key, newPassword: newPass })
@@ -2383,7 +2383,7 @@ async function removeBooking(id) {
   // Hit the backend if we have the _id
   if (backendId) {
     try {
-      const res = await fetch(` https://autodrive-75rh.onrender.com/api/bookings/${backendId}`, {
+      const res = await fetch(`https://autodrive-75rh.onrender.com/api/bookings/${backendId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
       });
@@ -2825,3 +2825,10 @@ async function sendSellNotificationEmail(data) {
     requestPushPermission().then(() => sendBookingNotifications(data));
   };
 })();
+
+/* ============================================================
+   KEEP RENDER BACKEND ALIVE (free tier spins down after 15 min)
+   ============================================================ */
+setInterval(function () {
+  fetch("https://autodrive-75rh.onrender.com/test").catch(function () {});
+}, 14 * 60 * 1000);
