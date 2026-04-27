@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repair Centers Near You — AutoDrive Ludhiana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/repair-styles.css">
+  <style>
+    .rcard-img { min-height: 160px; height: 160px; display: block; }
+    .rcard-img img { display: block; }
+  </style>
+</head>
+<body>
+
+
+<header class="navbar">
+
+  <div class="logo-container">
+    <img src="../../images/logo.png" alt="AutoDrive Logo" class="logo-img">
+    <h2 class="logo-text">AUTODRIVE</h2>
+  </div>
+
+  <div class="search-wrapper">
+    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" id="search" placeholder="Search cars...">
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="buy.html">Buy</a></li>
+    <li><a href="sell.html">Sell</a></li>
+    <li><a href="repair.html" class="active">Repair</a></li>
+    <li><a href="about.html">About Us</a></li>
+  </ul>
+
+</header>
+
+<!-- HERO -->
+<div class="repair-hero">
+  <div class="section-tag" style="display:inline-block;background:rgba(232,0,13,0.2);color:#ff6b6b;margin-bottom:16px">Ludhiana Service Network</div>
+  <h1>Repair Centers <span>Near You</span></h1>
+  <p>AutoDrive-partnered service centers in Ludhiana — trusted, transparent, and quality assured.</p>
+  <div style="display:flex;gap:32px;justify-content:center;flex-wrap:wrap">
+    <div style="text-align:center"><strong style="font-family:var(--font-head);font-size:28px;color:white;display:block">12+</strong><small style="color:#64748b">Partner Centers</small></div>
+    <div style="width:1px;background:rgba(255,255,255,0.1)"></div>
+    <div style="text-align:center"><strong style="font-family:var(--font-head);font-size:28px;color:white;display:block">4.7★</strong><small style="color:#64748b">Avg Rating</small></div>
+    <div style="width:1px;background:rgba(255,255,255,0.1)"></div>
+    <div style="text-align:center"><strong style="font-family:var(--font-head);font-size:28px;color:white;display:block">2km</strong><small style="color:#64748b">Closest Center</small></div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="repair-filter-bar">
+  <label>Filter by:</label>
+  <select id="repairFilter">
+    <option value="all">All Services</option>
+    <option value="multi">Multi-Brand</option>
+    <option value="maruti">Maruti</option>
+    <option value="hyundai">Hyundai</option>
+    <option value="kia">Kia</option>
+    <option value="premium">Premium</option>
+  </select>
+  <input type="text" id="repairSearch" placeholder="🔍 Search centers..." style="max-width:240px">
+</div>
+
+<!-- REPAIR CENTERS GRID -->
+<section style="padding:60px 48px;max-width:1296px;margin:0 auto" id="repairSection">
+  <div class="repair-page-grid" id="repairGrid">
+
+    <div class="rcard" data-service="multi">
+      <div class="rcard-img" style="position:relative;overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=600&q=80" alt="Auto workshop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.38) saturate(0.8);">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(180,0,8,0.35),rgba(10,10,20,0.55));"></div>
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;">
+          <div style="width:52px;height:52px;background:rgba(232,0,13,0.25);border:1.5px solid rgba(232,0,13,0.5);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;backdrop-filter:blur(4px);">🔧</div>
+          <span style="font-family:var(--font-head,Poppins,sans-serif);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);">Multi-Brand · Engine</span>
+        </div>
+        <span class="rcard-status status-open" style="position:absolute;top:12px;right:12px;">● Open Now</span>
+      </div>
+      <div class="rcard-body">
+        <h4>Sharma Auto Works</h4>
+        <div class="rcard-rating"><span class="stars">★★★★★</span><span>4.8</span><small>(124 reviews)</small></div>
+        <div class="rcard-addr">📍 GT Road, Near Civil Hospital, Ludhiana</div>
+        <div class="rcard-services"><span>Multi-Brand</span><span>AC Repair</span><span>Engine Overhaul</span><span>Tyres</span></div>
+        <p style="font-size:12.5px;color:#64748b;margin-bottom:14px">⏱ Mon–Sat: 8AM–8PM &nbsp;|&nbsp; Sun: 9AM–5PM</p>
+        <div class="rcard-actions">
+          <a href="tel:+919814000000" class="rcard-call">📞 Call Now</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=GT+Road+Near+Civil+Hospital+Ludhiana+Punjab+India" target="_blank" class="rcard-dir">🗺️ Directions</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rcard" data-service="maruti hyundai">
+      <div class="rcard-img" style="position:relative;overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Car servicing" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.35) saturate(0.8);">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,40,60,0.5),rgba(5,20,30,0.5));"></div>
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;">
+          <div style="width:52px;height:52px;background:rgba(232,0,13,0.25);border:1.5px solid rgba(232,0,13,0.5);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;backdrop-filter:blur(4px);">🏎️</div>
+          <span style="font-family:var(--font-head,Poppins,sans-serif);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);">Maruti · Hyundai</span>
+        </div>
+        <span class="rcard-status status-open" style="position:absolute;top:12px;right:12px;">● Open Now</span>
+      </div>
+      <div class="rcard-body">
+        <h4>Punjab Motors Service</h4>
+        <div class="rcard-rating"><span class="stars">★★★★★</span><span>4.7</span><small>(98 reviews)</small></div>
+        <div class="rcard-addr">📍 Ferozepur Road, Model Town, Ludhiana</div>
+        <div class="rcard-services"><span>Maruti</span><span>Hyundai</span><span>Honda</span><span>Servicing</span></div>
+        <p style="font-size:12.5px;color:#64748b;margin-bottom:14px">⏱ Mon–Sat: 9AM–7PM &nbsp;|&nbsp; Sun: Closed</p>
+        <div class="rcard-actions">
+          <a href="tel:+919780000000" class="rcard-call">📞 Call Now</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Ferozepur+Road+Model+Town+Ludhiana+Punjab+India" target="_blank" class="rcard-dir">🗺️ Directions</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rcard" data-service="multi">
+      <div class="rcard-img" style="position:relative;overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=600&q=80" alt="Car denting painting" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.32) saturate(0.7);">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(20,40,80,0.5),rgba(10,20,40,0.5));"></div>
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;">
+          <div style="width:52px;height:52px;background:rgba(232,0,13,0.25);border:1.5px solid rgba(232,0,13,0.5);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;backdrop-filter:blur(4px);">⚙️</div>
+          <span style="font-family:var(--font-head,Poppins,sans-serif);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);">Denting · Paint</span>
+        </div>
+        <span class="rcard-status status-open" style="position:absolute;top:12px;right:12px;">● Open Now</span>
+      </div>
+      <div class="rcard-body">
+        <h4>QuickFix Auto Care</h4>
+        <div class="rcard-rating"><span class="stars">★★★★☆</span><span>4.6</span><small>(76 reviews)</small></div>
+        <div class="rcard-addr">📍 Dugri Phase 2, Ludhiana</div>
+        <div class="rcard-services"><span>Denting</span><span>Painting</span><span>Electrical</span><span>Detailing</span></div>
+        <p style="font-size:12.5px;color:#64748b;margin-bottom:14px">⏱ Mon–Sun: 9AM–7PM</p>
+        <div class="rcard-actions">
+          <a href="tel:+919646000000" class="rcard-call">📞 Call Now</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Dugri+Phase+2+Ludhiana+Punjab+India" target="_blank" class="rcard-dir">🗺️ Directions</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rcard" data-service="kia premium">
+      <div class="rcard-img" style="position:relative;overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=600&q=80" alt="Premium car service" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.33) saturate(0.75);">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,25,50,0.55),rgba(10,30,60,0.45));"></div>
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;">
+          <div style="width:52px;height:52px;background:rgba(232,0,13,0.25);border:1.5px solid rgba(232,0,13,0.5);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;backdrop-filter:blur(4px);">🛠️</div>
+          <span style="font-family:var(--font-head,Poppins,sans-serif);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);">Kia · Premium</span>
+        </div>
+        <span class="rcard-status status-open" style="position:absolute;top:12px;right:12px;">● Open Now</span>
+      </div>
+      <div class="rcard-body">
+        <h4>DriveRight Service Hub</h4>
+        <div class="rcard-rating"><span class="stars">★★★★★</span><span>4.9</span><small>(211 reviews)</small></div>
+        <div class="rcard-addr">📍 Pakhowal Road, Near BRS Nagar, Ludhiana</div>
+        <div class="rcard-services"><span>Kia</span><span>Toyota</span><span>Premium</span><span>Hybrid</span></div>
+        <p style="font-size:12.5px;color:#64748b;margin-bottom:14px">⏱ Mon–Sat: 9AM–8PM &nbsp;|&nbsp; Sun: 10AM–4PM</p>
+        <div class="rcard-actions">
+          <a href="tel:+919876000000" class="rcard-call">📞 Call Now</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Pakhowal+Road+BRS+Nagar+Ludhiana+Punjab+India" target="_blank" class="rcard-dir">🗺️ Directions</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rcard" data-service="hyundai">
+      <div class="rcard-img" style="position:relative;overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80" alt="Hyundai suspension workshop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.3) saturate(0.7);">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(25,15,45,0.55),rgba(35,20,70,0.45));"></div>
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;">
+          <div style="width:52px;height:52px;background:rgba(232,0,13,0.25);border:1.5px solid rgba(232,0,13,0.5);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;backdrop-filter:blur(4px);">🚘</div>
+          <span style="font-family:var(--font-head,Poppins,sans-serif);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);">Hyundai · Suzuki</span>
+        </div>
+        <span class="rcard-status status-closed" style="position:absolute;top:12px;right:12px;">● Closed</span>
+      </div>
+      <div class="rcard-body">
+        <h4>Star Auto Workshop</h4>
+        <div class="rcard-rating"><span class="stars">★★★★☆</span><span>4.5</span><small>(53 reviews)</small></div>
+        <div class="rcard-addr">📍 Salem Tabri, Ludhiana</div>
+        <div class="rcard-services"><span>Hyundai</span><span>Suzuki</span><span>Suspension</span></div>
+        <p style="font-size:12.5px;color:#64748b;margin-bottom:14px">⏱ Mon–Sat: 8AM–6PM &nbsp;|&nbsp; Sun: Closed</p>
+        <div class="rcard-actions">
+          <a href="tel:+919888000000" class="rcard-call">📞 Call Now</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Salem+Tabri+Ludhiana+Punjab+India" target="_blank" class="rcard-dir">🗺️ Directions</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rcard" data-service="multi premium">
+      <div class="rcard-img" style="position:relative;overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?w=600&q=80" alt="Premium PPF detailing" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.3) saturate(0.75);">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,30,10,0.55),rgba(15,45,15,0.45));"></div>
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;">
+          <div style="width:52px;height:52px;background:rgba(232,0,13,0.25);border:1.5px solid rgba(232,0,13,0.5);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;backdrop-filter:blur(4px);">🏆</div>
+          <span style="font-family:var(--font-head,Poppins,sans-serif);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);">Premium · PPF</span>
+        </div>
+        <span class="rcard-status status-open" style="position:absolute;top:12px;right:12px;">● Open Now</span>
+      </div>
+      <div class="rcard-body">
+        <h4>Elite Motor Garage</h4>
+        <div class="rcard-rating"><span class="stars">★★★★★</span><span>4.8</span><small>(167 reviews)</small></div>
+        <div class="rcard-addr">📍 Sarabha Nagar, Ludhiana</div>
+        <div class="rcard-services"><span>Multi-Brand</span><span>Premium</span><span>3M Films</span><span>PPF</span></div>
+        <p style="font-size:12.5px;color:#64748b;margin-bottom:14px">⏱ Mon–Sat: 9AM–8PM &nbsp;|&nbsp; Appt on Sun</p>
+        <div class="rcard-actions">
+          <a href="tel:+919855000000" class="rcard-call">📞 Call Now</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Sarabha+Nagar+Ludhiana+Punjab+India" target="_blank" class="rcard-dir">🗺️ Directions</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- CTA -->
+<section class="repair-cta">
+  <h2>Need a Service Recommendation?</h2>
+  <p>Our AI assistant can help you find the right repair center for your car's make and model.</p>
+  <a href="#" class="btn-cta-w" onclick="openAI(); return false;">🤖 Ask AI Assistant →</a>
+</section>
+
+
+
+<!-- AI MODAL -->
+<div class="ai-modal" id="aiModal">
+  <div class="ai-panel">
+    <div class="ai-header">
+      <div class="ai-avatar">🤖</div>
+      <div><strong>AutoDrive AI</strong><small>Find the right service center</small></div>
+      <button class="ai-close" onclick="closeAI()">✕</button>
+    </div>
+    <div class="ai-messages" id="aiMessages">
+      <div class="ai-msg bot">
+        <div class="ai-bubble">
+          Hi! Tell me your car's make and the issue, and I'll suggest the best service center for you!
+          <div class="ai-chips">
+            <button onclick="askAI('My Maruti needs servicing, which center?')">Maruti Servicing</button>
+            <button onclick="askAI('AC not working in my Hyundai')">AC Repair Help</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-input-row">
+      <input type="text" id="aiInput" placeholder="Describe your car issue..." onkeydown="if(event.key==='Enter')sendAI()">
+      <button onclick="sendAI()" class="ai-send">➤</button>
+    </div>
+  </div>
+</div>
+
+<button id="backToTop" title="Back to top">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="js/script.js"></script>
+<script src="js/repair.js"></script>
+</body>
+</html>

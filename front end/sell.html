@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Car - AutoDrive</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sell.css">
+
+    <!-- sell.css covers all sell-page styles including hero, form, and success popup -->
+
+</head>
+
+<body>
+
+<!-- ════════════════════════════
+     NAVBAR
+════════════════════════════ -->
+<header class="navbar">
+
+    <div class="logo-container">
+        <img src="../../images/logo.png" alt="AutoDrive Logo" class="logo-img">
+        <h2 class="logo-text">AUTODRIVE</h2>
+    </div>
+
+    <div class="search-wrapper">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="search" placeholder="Search cars...">
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="buy.html">Buy</a></li>
+        <li><a href="sell.html" class="active">Sell</a></li>
+        <li><a href="repair.html">Repair </a></li>
+        <li><a href="about.html">About Us</a></li>
+    </ul>
+
+</header>
+<div class="left-side-btns">
+  <button class="ls-btn ls-user" id="lsUserBtn" title="Login / Register" onclick="toggleAuthPanel()">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"></path>
+    </svg>
+  </button>
+</div>
+
+<!-- Auth Slide Panel -->
+<div class="auth-slide-panel" id="authSlidePanel">
+  <div class="auth-hdr">
+    <div class="auth-brand">AutoDrive</div>
+    <h2>Welcome Back</h2>
+    <p>Sign in or create your account</p>
+  </div>
+
+  <div class="auth-tabs-row">
+    <button class="auth-tab-btn active" id="sp-tab-l" onclick="switchAuthTab('slide','login')">Login</button>
+    <button class="auth-tab-btn" id="sp-tab-r" onclick="switchAuthTab('slide','register')">Register</button>
+  </div>
+
+  <div class="auth-form-wrap" id="sp-login">
+    <div class="auth-field">
+      <label>Email Address</label>
+      <div class="input-icon-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,12 2,6"></polyline>
+        </svg>
+        <input type="email" id="sp-login-email" placeholder="you@email.com">
+      </div>
+      <span class="field-error" id="sp-login-email-err"></span>
+    </div>
+
+    <div class="auth-field">
+      <label>Password</label>
+      <div class="input-icon-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <input type="password" id="sp-login-pass" placeholder="••••••••">
+        <button type="button" class="toggle-pass" onclick="togglePass('sp-login-pass', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </button>
+      </div>
+      <span class="field-error" id="sp-login-pass-err"></span>
+    </div>
+
+    <button class="auth-submit-btn" id="sp-login-btn" onclick="loginUser()">
+      <span class="btn-text">Sign In →</span>
+      <span class="btn-spinner hidden"></span>
+    </button>
+
+    <p class="auth-form-footer">Don't have an account? <a onclick="switchAuthTab('slide','register')">Register free</a></p>
+  </div>
+
+  <div class="auth-form-wrap hidden" id="sp-register">
+    <div class="auth-field">
+      <label>Full Name</label>
+      <div class="input-icon-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <input type="text" id="sp-reg-name" placeholder="Your full name">
+      </div>
+      <span class="field-error" id="sp-reg-name-err"></span>
+    </div>
+
+    <div class="auth-field">
+      <label>Email Address</label>
+      <div class="input-icon-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,12 2,6"></polyline>
+        </svg>
+        <input type="email" id="sp-reg-email" placeholder="you@email.com">
+      </div>
+      <span class="field-error" id="sp-reg-email-err"></span>
+    </div>
+
+    <div class="auth-field">
+      <label>Phone Number</label>
+      <div class="input-icon-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.6a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"></path>
+        </svg>
+        <input type="tel" id="sp-reg-phone" placeholder="+91 98765 43210">
+      </div>
+      <span class="field-error" id="sp-reg-phone-err"></span>
+    </div>
+
+    <div class="auth-field">
+      <label>Password</label>
+      <div class="input-icon-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <input type="password" id="sp-reg-pass" placeholder="Min. 6 characters">
+        <button type="button" class="toggle-pass" onclick="togglePass('sp-reg-pass', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </button>
+      </div>
+      <span class="field-error" id="sp-reg-pass-err"></span>
+    </div>
+
+    <button class="auth-submit-btn" id="sp-reg-btn" onclick="registerUser()">
+      <span class="btn-text">Create Account →</span>
+      <span class="btn-spinner hidden"></span>
+    </button>
+
+    <p class="auth-form-footer">Have an account? <a onclick="switchAuthTab('slide','login')">Sign in</a></p>
+  </div>
+</div>
+
+<!-- Profile Slide Panel (shown after login instead of auth panel) -->
+<div class="profile-slide-panel" id="profileSlidePanel">
+  <div class="psp-header">
+    <div class="psp-avatar-wrap" onclick="document.getElementById('pspAvatarInput').click()" title="Change photo">
+      <div class="psp-avatar" id="pspAvatar">
+        <span id="pspAvatarInitials">?</span>
+        <img id="pspAvatarImg" src="" style="display:none" alt="Avatar">
+      </div>
+      <div class="psp-avatar-overlay">📷</div>
+    </div>
+    <input type="file" id="pspAvatarInput" accept="image/*" style="display:none" onchange="handleProfileAvatar(event)">
+    <div class="psp-user-info">
+      <div class="psp-user-name" id="pspUserName">My Profile</div>
+      <div class="psp-user-email" id="pspUserEmail"></div>
+      <span class="psp-badge">Member</span>
+    </div>
+    <button class="psp-close-btn" onclick="closeProfilePanel()" title="Close">✕</button>
+  </div>
+
+  <div class="psp-body">
+    <div class="psp-msg" id="pspMsg"></div>
+
+    <div class="psp-section-label">Personal Info</div>
+
+    <div class="psp-row">
+      <div class="psp-field">
+        <label>First Name</label>
+        <input type="text" id="psp-firstname" placeholder="First name">
+      </div>
+      <div class="psp-field">
+        <label>Last Name</label>
+        <input type="text" id="psp-lastname" placeholder="Last name">
+      </div>
+    </div>
+
+    <div class="psp-field">
+      <label>Username</label>
+      <input type="text" id="psp-username" placeholder="@username">
+    </div>
+
+    <div class="psp-field">
+      <label>Email</label>
+      <input type="email" id="psp-email" placeholder="you@email.com">
+    </div>
+
+    <div class="psp-row">
+      <div class="psp-field">
+        <label>Phone</label>
+        <input type="tel" id="psp-phone" placeholder="+91 98765 43210">
+      </div>
+      <div class="psp-field">
+        <label>Date of Birth</label>
+        <input type="date" id="psp-dob">
+      </div>
+    </div>
+
+    <div class="psp-row">
+      <div class="psp-field">
+        <label>City</label>
+        <input type="text" id="psp-city" placeholder="Ludhiana">
+      </div>
+      <div class="psp-field">
+        <label>Country</label>
+        <select id="psp-country">
+          <option value="">Select</option>
+          <option>India</option>
+          <option>United States</option>
+          <option>United Kingdom</option>
+          <option>Canada</option>
+          <option>Australia</option>
+          <option>Germany</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="psp-field">
+      <label>Bio</label>
+      <textarea id="psp-bio" placeholder="Tell us about yourself…" rows="3"></textarea>
+    </div>
+
+    <div class="psp-section-label">Change Password</div>
+
+    <div class="psp-row">
+      <div class="psp-field">
+        <label>New Password</label>
+        <input type="password" id="psp-newpass" placeholder="Leave blank to keep">
+      </div>
+      <div class="psp-field">
+        <label>Confirm Password</label>
+        <input type="password" id="psp-confirmpass" placeholder="Repeat">
+      </div>
+    </div>
+
+    <div class="psp-actions">
+      <button class="psp-save-btn" onclick="saveProfilePanel()">Save Changes</button>
+      <button class="psp-discard-btn" onclick="discardProfilePanel()">Discard</button>
+    </div>
+
+    <button class="psp-logout-btn" onclick="logoutUser()">⟵ Sign Out</button>
+  </div>
+</div>
+
+<!-- Auth Popup -->
+<div class="auth-popup-overlay hidden" id="authPopupOverlay">
+  <div class="auth-popup-card">
+    <div class="auth-hdr">
+      <div class="auth-brand">AutoDrive</div>
+      <h2>Welcome to AutoDrive</h2>
+      <p>Sign in or create your account to continue</p>
+      <button class="auth-close-x" onclick="closeAuthPopup()">✕</button>
+    </div>
+
+    <div class="auth-tabs-row">
+      <button class="auth-tab-btn active" id="pp-tab-l" onclick="switchAuthTab('popup','login')">Login</button>
+      <button class="auth-tab-btn" id="pp-tab-r" onclick="switchAuthTab('popup','register')">Register</button>
+    </div>
+
+    <div class="auth-form-wrap" id="pp-login">
+      <div class="auth-field">
+        <label>Email Address</label>
+        <div class="input-icon-wrap">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,12 2,6"></polyline>
+          </svg>
+          <input type="email" id="pp-login-email" placeholder="you@email.com">
+        </div>
+        <span class="field-error" id="pp-login-email-err"></span>
+      </div>
+
+      <div class="auth-field">
+        <label>Password</label>
+        <div class="input-icon-wrap">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <input type="password" id="pp-login-pass" placeholder="••••••••">
+          <button type="button" class="toggle-pass" onclick="togglePass('pp-login-pass', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </button>
+        </div>
+        <span class="field-error" id="pp-login-pass-err"></span>
+      </div>
+
+      <button class="auth-submit-btn" id="pp-login-btn" onclick="loginUser()">
+        <span class="btn-text">Sign In →</span>
+        <span class="btn-spinner hidden"></span>
+      </button>
+
+      <p class="auth-form-footer">Don't have an account? <a onclick="switchAuthTab('popup','register')">Register free</a></p>
+    </div>
+
+    <div class="auth-form-wrap hidden" id="pp-register">
+      <div class="auth-field">
+        <label>Full Name</label>
+        <div class="input-icon-wrap">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <input type="text" id="pp-reg-name" placeholder="Your full name">
+        </div>
+        <span class="field-error" id="pp-reg-name-err"></span>
+      </div>
+
+      <div class="auth-field">
+        <label>Email Address</label>
+        <div class="input-icon-wrap">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,12 2,6"></polyline>
+          </svg>
+          <input type="email" id="pp-reg-email" placeholder="you@email.com">
+        </div>
+        <span class="field-error" id="pp-reg-email-err"></span>
+      </div>
+
+      <div class="auth-field">
+        <label>Phone Number</label>
+        <div class="input-icon-wrap">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.6a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"></path>
+          </svg>
+          <input type="tel" id="pp-reg-phone" placeholder="+91 98765 43210">
+        </div>
+        <span class="field-error" id="pp-reg-phone-err"></span>
+      </div>
+
+      <div class="auth-field">
+        <label>Password</label>
+        <div class="input-icon-wrap">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <input type="password" id="pp-reg-pass" placeholder="Min. 6 characters">
+          <button type="button" class="toggle-pass" onclick="togglePass('pp-reg-pass', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </button>
+        </div>
+        <span class="field-error" id="pp-reg-pass-err"></span>
+      </div>
+
+      <button class="auth-submit-btn" id="pp-reg-btn" onclick="registerUser()">
+        <span class="btn-text">Create Account →</span>
+        <span class="btn-spinner hidden"></span>
+      </button>
+
+      <p class="auth-form-footer">Have an account? <a onclick="switchAuthTab('popup','login')">Sign in</a></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- ════════════════════════════
+     HERO SECTION
+════════════════════════════ -->
+<div class="sell-hero">
+    <div class="sell-hero-inner">
+
+        <!-- Left: text content -->
+        <div class="sell-hero-content">
+
+            <div class="hero-badge">Sell in 3 Easy Steps</div>
+
+            <h1>Sell Your Car<br>Get <span>Best Price</span></h1>
+
+            <p>Fill in your details and our team will contact you with the best market
+               price for your vehicle.</p>
+
+            <div class="sell-steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Fill the form</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>We contact you</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>Get paid</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- end .sell-hero-content -->
+
+
+        <!-- Right: animated key handover graphic -->
+        <div class="sell-hero-visual">
+
+            <svg class="hero-svg" viewBox="0 0 680 430" xmlns="http://www.w3.org/2000/svg">
+
+                <defs>
+
+                    <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%"   stop-color="#050c1f"/>
+                        <stop offset="100%" stop-color="#142348"/>
+                    </linearGradient>
+
+                    <linearGradient id="gGround" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%"   stop-color="#14141e"/>
+                        <stop offset="100%" stop-color="#080810"/>
+                    </linearGradient>
+
+                    <linearGradient id="gCarBody" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%"   stop-color="#4288e0"/>
+                        <stop offset="70%"  stop-color="#1e52a8"/>
+                        <stop offset="100%" stop-color="#143a80"/>
+                    </linearGradient>
+
+                    <linearGradient id="gCarRoof" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%"   stop-color="#5298f0"/>
+                        <stop offset="100%" stop-color="#2462c0"/>
+                    </linearGradient>
+
+                    <radialGradient id="gGroundGlow" cx="50%" cy="10%" r="55%">
+                        <stop offset="0%"   stop-color="#2a68c8" stop-opacity=".4"/>
+                        <stop offset="100%" stop-color="#2a68c8" stop-opacity="0"/>
+                    </radialGradient>
+
+                    <radialGradient id="gHeadlight" cx="15%" cy="50%" r="85%">
+                        <stop offset="0%"   stop-color="#fffde8" stop-opacity=".95"/>
+                        <stop offset="100%" stop-color="#fffde8" stop-opacity="0"/>
+                    </radialGradient>
+
+                    <linearGradient id="gKey" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%"   stop-color="#ffe85a"/>
+                        <stop offset="100%" stop-color="#f0a010"/>
+                    </linearGradient>
+
+                    <linearGradient id="gSellerShirt" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%"   stop-color="#d03528"/>
+                        <stop offset="100%" stop-color="#9a2018"/>
+                    </linearGradient>
+
+                    <linearGradient id="gBuyerShirt" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%"   stop-color="#1a8040"/>
+                        <stop offset="100%" stop-color="#105828"/>
+                    </linearGradient>
+
+                    <linearGradient id="gSellerSkin" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%"   stop-color="#eeaa80"/>
+                        <stop offset="100%" stop-color="#d89060"/>
+                    </linearGradient>
+
+                    <linearGradient id="gBuyerSkin" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%"   stop-color="#d08840"/>
+                        <stop offset="100%" stop-color="#b87030"/>
+                    </linearGradient>
+
+                </defs>
+
+
+                <!-- Sky background -->
+                <rect width="680" height="430" fill="url(#gSky)"/>
+
+
+                <!-- Stars -->
+                <circle class="star" style="--d:2.8s; --dl:0s"   cx="52"  cy="25" r="1.3" fill="#fff" opacity=".75"/>
+                <circle class="star" style="--d:3.6s; --dl:.6s"  cx="108" cy="52" r=".9"  fill="#fff" opacity=".5"/>
+                <circle class="star" style="--d:2.3s; --dl:1s"   cx="182" cy="20" r="1.1" fill="#fff" opacity=".65"/>
+                <circle class="star" style="--d:4.1s; --dl:.3s"  cx="292" cy="36" r=".8"  fill="#fff" opacity=".45"/>
+                <circle class="star" style="--d:3.0s; --dl:.9s"  cx="428" cy="16" r="1.2" fill="#fff" opacity=".7"/>
+                <circle class="star" style="--d:2.7s; --dl:1.5s" cx="502" cy="46" r=".9"  fill="#fff" opacity=".5"/>
+                <circle class="star" style="--d:3.8s; --dl:.4s"  cx="598" cy="24" r="1.1" fill="#fff" opacity=".65"/>
+                <circle class="star" style="--d:4.4s; --dl:1.0s" cx="646" cy="58" r=".8"  fill="#fff" opacity=".4"/>
+                <circle class="star" style="--d:2.5s; --dl:1.9s" cx="348" cy="10" r="1"   fill="#fff" opacity=".55"/>
+                <circle class="star" style="--d:3.3s; --dl:.7s"  cx="146" cy="68" r=".7"  fill="#fff" opacity=".4"/>
+                <circle class="star" style="--d:3.9s; --dl:1.2s" cx="478" cy="66" r=".7"  fill="#fff" opacity=".35"/>
+                <circle class="star" style="--d:2.9s; --dl:2.1s" cx="38"  cy="80" r=".8"  fill="#fff" opacity=".3"/>
+                <circle class="star" style="--d:3.5s; --dl:.1s"  cx="558" cy="80" r=".7"  fill="#fff" opacity=".35"/>
+
+
+                <!-- Moon -->
+                <g class="moon">
+                    <circle cx="618" cy="52" r="26" fill="#f2e8a8"/>
+                    <circle cx="632" cy="43" r="20" fill="#050c1f"/>
+                    <circle cx="610" cy="62" r="2.5" fill="#e4d890" opacity=".3"/>
+                    <circle cx="624" cy="56" r="1.5" fill="#e4d890" opacity=".2"/>
+                </g>
+
+
+                <!-- Ground and road -->
+                <rect x="0" y="308" width="680" height="122" fill="url(#gGround)"/>
+                <ellipse cx="340" cy="316" rx="335" ry="22" fill="#16162a"/>
+                <ellipse cx="340" cy="314" rx="265" ry="34" fill="url(#gGroundGlow)"/>
+
+                <!-- Animated road dashes -->
+                <line class="road-line"
+                      x1="150" y1="315" x2="530" y2="315"
+                      stroke="#30305a" stroke-width="3.5" stroke-dasharray="32 22"/>
+
+
+                <!-- Headlight beam cone -->
+                <polygon class="headlight"
+                         points="183,262 183,276 76,296 76,246"
+                         fill="url(#gHeadlight)" opacity=".12"/>
+
+
+                <!-- Car -->
+                <g class="car">
+
+                    <!-- Car shadow on ground -->
+                    <ellipse cx="340" cy="307" rx="182" ry="11" fill="#000" opacity=".45"/>
+
+                    <!-- Car body -->
+                    <rect x="155" y="250" width="370" height="58" rx="11" fill="url(#gCarBody)"/>
+
+                    <!-- Car roof / cabin -->
+                    <path d="M222 250 Q243 200 284 192 L398 192 Q438 200 458 250Z"
+                          fill="url(#gCarRoof)"/>
+
+                    <!-- Windshield glass -->
+                    <path d="M288 193 Q293 213 308 243 L374 243 Q389 213 394 193Z"
+                          fill="#b8dcff" opacity=".52"/>
+                    <path d="M288 193 Q293 213 308 243 L374 243 Q389 213 394 193Z"
+                          fill="none" stroke="#163a78" stroke-width="1.2"/>
+
+                    <!-- Left side window -->
+                    <path d="M230 249 Q237 221 263 208 L291 208 Q288 233 283 249Z"
+                          fill="#b8dcff" opacity=".44"/>
+                    <path d="M230 249 Q237 221 263 208 L291 208 Q288 233 283 249Z"
+                          fill="none" stroke="#163a78" stroke-width="1.2"/>
+
+                    <!-- Right side window -->
+                    <path d="M401 208 L430 208 Q455 221 462 249 L401 249Z"
+                          fill="#b8dcff" opacity=".44"/>
+
+                    <!-- Door seam lines -->
+                    <line x1="298" y1="249" x2="298" y2="308" stroke="#163a78" stroke-width="1.2" opacity=".6"/>
+                    <line x1="384" y1="249" x2="384" y2="308" stroke="#163a78" stroke-width="1.2" opacity=".6"/>
+
+                    <!-- Door handles -->
+                    <rect x="250" y="274" width="24" height="5" rx="2.5" fill="#f8d040" opacity=".85"/>
+                    <rect x="352" y="274" width="24" height="5" rx="2.5" fill="#f8d040" opacity=".85"/>
+
+                    <!-- Front headlight -->
+                    <rect x="155" y="261" width="30" height="15" rx="6" fill="#f8ec90" opacity=".95"/>
+                    <rect x="157" y="263" width="26" height="11" rx="5" fill="#fffde8"/>
+
+                    <!-- Rear tail light -->
+                    <rect x="497" y="261" width="28" height="15" rx="5" fill="#ff4444" opacity=".8"/>
+
+                    <!-- Left wheel -->
+                    <circle cx="222" cy="304" r="29" fill="#0a0a14"/>
+                    <circle cx="222" cy="304" r="21" fill="#141428"/>
+                    <g class="wheel-l">
+                        <line x1="222" y1="284" x2="222" y2="324" stroke="#7a7a9a" stroke-width="2.5" opacity=".55"/>
+                        <line x1="202" y1="304" x2="242" y2="304" stroke="#7a7a9a" stroke-width="2.5" opacity=".55"/>
+                        <line x1="207" y1="289" x2="237" y2="319" stroke="#7a7a9a" stroke-width="2"   opacity=".35"/>
+                        <line x1="237" y1="289" x2="207" y2="319" stroke="#7a7a9a" stroke-width="2"   opacity=".35"/>
+                    </g>
+                    <circle cx="222" cy="304" r="7" fill="#c0c0d8" opacity=".65"/>
+
+                    <!-- Right wheel -->
+                    <circle cx="458" cy="304" r="29" fill="#0a0a14"/>
+                    <circle cx="458" cy="304" r="21" fill="#141428"/>
+                    <g class="wheel-r">
+                        <line x1="458" y1="284" x2="458" y2="324" stroke="#7a7a9a" stroke-width="2.5" opacity=".55"/>
+                        <line x1="438" y1="304" x2="478" y2="304" stroke="#7a7a9a" stroke-width="2.5" opacity=".55"/>
+                        <line x1="443" y1="289" x2="473" y2="319" stroke="#7a7a9a" stroke-width="2"   opacity=".35"/>
+                        <line x1="473" y1="289" x2="443" y2="319" stroke="#7a7a9a" stroke-width="2"   opacity=".35"/>
+                    </g>
+                    <circle cx="458" cy="304" r="7" fill="#c0c0d8" opacity=".65"/>
+
+                </g>
+                <!-- end car -->
+
+
+                <!-- Key arc trail (drawn as key flies across) -->
+                <path class="arc"
+                      d="M193 232 Q340 100 487 232"
+                      fill="none"
+                      stroke="#f8d040"
+                      stroke-width="1.5"
+                      stroke-dasharray="500"
+                      stroke-dashoffset="500"
+                      opacity=".35"
+                      stroke-linecap="round"/>
+
+
+                <!--
+                    Flying key animation
+                    Uses two wrapper groups:
+                      - key-x  moves it horizontally from seller (193) to buyer (487)
+                      - key-y  moves it up then down to create the arc shape
+                    Together they produce a smooth parabola flight path
+                -->
+                <g class="key-x" style="transform-origin: 193px 232px;">
+                    <g class="key-y" style="transform-origin: 193px 232px;">
+                        <g class="key-spin" style="transform-origin: 193px 232px;">
+
+                            <!-- The key shape -->
+                            <g transform="translate(193, 232) rotate(-30)">
+                                <circle cx="0" cy="0" r="18" fill="#f8d040" opacity=".22"/>
+                                <circle cx="0" cy="0" r="11"  fill="none" stroke="url(#gKey)" stroke-width="4"/>
+                                <circle cx="0" cy="0" r="5.5" fill="none" stroke="url(#gKey)" stroke-width="3"/>
+                                <line x1="11" y1="0"  x2="36" y2="0"  stroke="url(#gKey)" stroke-width="4.5" stroke-linecap="round"/>
+                                <line x1="18" y1="0"  x2="18" y2="-8"  stroke="url(#gKey)" stroke-width="3.2" stroke-linecap="round"/>
+                                <line x1="24" y1="0"  x2="24" y2="-10" stroke="url(#gKey)" stroke-width="3.2" stroke-linecap="round"/>
+                                <line x1="30" y1="0"  x2="30" y2="-7"  stroke="url(#gKey)" stroke-width="3.2" stroke-linecap="round"/>
+                            </g>
+
+                            <!-- Sparkle particles attached to key -->
+                            <g transform="translate(193, 232)">
+                                <circle class="spark-1" cx="0" cy="0" r="3.5" fill="#ffe85a"/>
+                                <circle class="spark-2" cx="0" cy="0" r="2.5" fill="#ffffff"/>
+                                <circle class="spark-3" cx="0" cy="0" r="3"   fill="#ffe85a"/>
+                                <circle class="spark-4" cx="0" cy="0" r="2"   fill="#ffffff"/>
+                            </g>
+
+                        </g>
+                    </g>
+                </g>
+                <!-- end key -->
+
+
+                <!-- Seller — red shirt, left side, hands key over -->
+                <g class="seller">
+
+                    <!-- Legs -->
+                    <rect x="94"  y="263" width="16" height="42" rx="5" fill="#223060"/>
+                    <rect x="114" y="263" width="16" height="42" rx="5" fill="#223060"/>
+                    <ellipse cx="102" cy="305" rx="13" ry="5.5" fill="#0a0a14"/>
+                    <ellipse cx="122" cy="305" rx="13" ry="5.5" fill="#0a0a14"/>
+
+                    <!-- Torso -->
+                    <rect x="88" y="198" width="46" height="68" rx="8" fill="url(#gSellerShirt)"/>
+                    <polygon points="111,198 103,216 119,216" fill="#f8f4ec"/>
+
+                    <!-- Right arm hanging down -->
+                    <path d="M88 220 Q74 240 76 262"
+                          stroke="url(#gSellerSkin)" stroke-width="12"
+                          stroke-linecap="round" fill="none"/>
+
+                    <!-- Left arm extending to give the key -->
+                    <g class="seller-arm">
+                        <path d="M133 210 Q165 218 193 232"
+                              stroke="url(#gSellerSkin)" stroke-width="12"
+                              stroke-linecap="round" fill="none"/>
+                        <circle cx="194" cy="233" r="9" fill="#eeaa80"/>
+                    </g>
+
+                    <!-- Head -->
+                    <circle cx="111" cy="182" r="22" fill="url(#gSellerSkin)"/>
+
+                    <!-- Hair -->
+                    <path d="M90 174 Q95 155 111 152 Q127 155 132 174 Q126 163 111 160 Q96 163 90 174Z"
+                          fill="#3a2010"/>
+
+                    <!-- Eyes -->
+                    <circle cx="105" cy="179" r="2.8" fill="#28180a"/>
+                    <circle cx="117" cy="179" r="2.8" fill="#28180a"/>
+
+                    <!-- Eyebrows -->
+                    <path d="M102 174 Q105 172 108 174" stroke="#3a2010" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                    <path d="M114 174 Q117 172 120 174" stroke="#3a2010" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+                    <!-- Smile -->
+                    <path d="M106 188 Q111 194 116 188" stroke="#a06030" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+                </g>
+                <!-- end seller -->
+
+
+                <!-- Buyer — green shirt, right side, receives the key -->
+                <g class="buyer">
+
+                    <!-- Legs -->
+                    <rect x="554" y="263" width="16" height="42" rx="5" fill="#182038"/>
+                    <rect x="574" y="263" width="16" height="42" rx="5" fill="#182038"/>
+                    <ellipse cx="562" cy="305" rx="13" ry="5.5" fill="#0a0a14"/>
+                    <ellipse cx="582" cy="305" rx="13" ry="5.5" fill="#0a0a14"/>
+
+                    <!-- Torso -->
+                    <rect x="547" y="198" width="46" height="68" rx="8" fill="url(#gBuyerShirt)"/>
+                    <polygon points="570,198 562,216 578,216" fill="#f8f4ec"/>
+
+                    <!-- Right arm hanging down -->
+                    <path d="M593 220 Q607 240 605 262"
+                          stroke="url(#gBuyerSkin)" stroke-width="12"
+                          stroke-linecap="round" fill="none"/>
+
+                    <!-- Left arm reaching in to catch the key -->
+                    <g class="buyer-arm">
+                        <path d="M547 210 Q515 218 487 232"
+                              stroke="url(#gBuyerSkin)" stroke-width="12"
+                              stroke-linecap="round" fill="none"/>
+                        <circle cx="486" cy="233" r="9" fill="#d08840"/>
+                    </g>
+
+                    <!-- Head -->
+                    <circle cx="570" cy="182" r="22" fill="url(#gBuyerSkin)"/>
+
+                    <!-- Hair -->
+                    <path d="M549 174 Q554 155 570 152 Q586 155 591 174 Q585 163 570 160 Q555 163 549 174Z"
+                          fill="#1a0e06"/>
+
+                    <!-- Eyes -->
+                    <circle cx="564" cy="179" r="2.8" fill="#28180a"/>
+                    <circle cx="576" cy="179" r="2.8" fill="#28180a"/>
+
+                    <!-- Eyebrows -->
+                    <path d="M561 174 Q564 172 567 174" stroke="#1a0e06" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                    <path d="M573 174 Q576 172 579 174" stroke="#1a0e06" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+                    <!-- Smile -->
+                    <path d="M565 188 Q570 194 575 188" stroke="#804020" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+                </g>
+                <!-- end buyer -->
+
+
+                <!-- Soft golden glow between the two people -->
+                <ellipse class="glow"
+                         cx="340" cy="230" rx="100" ry="44"
+                         fill="#f8d040" opacity=".1"/>
+
+
+                <!-- Name badges at the bottom -->
+                <g class="badge-l">
+                    <rect x="70"  y="328" width="82" height="24" rx="7" fill="#c0301e" opacity=".9"/>
+                    <text x="111" y="344" text-anchor="middle"
+                          font-family="Poppins, sans-serif"
+                          font-size="12" font-weight="500" fill="#fff">Seller</text>
+                </g>
+
+                <g class="badge-r">
+                    <rect x="528" y="328" width="82" height="24" rx="7" fill="#186838" opacity=".9"/>
+                    <text x="569" y="344" text-anchor="middle"
+                          font-family="Poppins, sans-serif"
+                          font-size="12" font-weight="500" fill="#fff">Buyer</text>
+                </g>
+
+
+                <!-- Watermark -->
+                <text x="340" y="408" text-anchor="middle"
+                      font-family="Montserrat, sans-serif"
+                      font-size="9.5" font-weight="700"
+                      fill="#fff" opacity=".13" letter-spacing="4">AUTODRIVE</text>
+
+            </svg>
+
+        </div>
+        <!-- end .sell-hero-visual -->
+
+    </div>
+    <!-- end .sell-hero-inner -->
+
+</div>
+<!-- end .sell-hero -->
+
+
+<!-- ════════════════════════════
+     SELL FORM SECTION
+════════════════════════════ -->
+<section class="sell-section">
+  <div class="sell-form-wrap">
+
+    <!-- Left: Benefits -->
+    <div class="sell-form-left">
+      <h2>Why Sell With <span>AutoDrive?</span></h2>
+      <div class="sell-benefit">
+        <div class="benefit-icon">💰</div>
+        <div><h4>Best Market Price</h4><p>We offer competitive prices based on current market value.</p></div>
+      </div>
+      <div class="sell-benefit">
+        <div class="benefit-icon">⚡</div>
+        <div><h4>Fast Process</h4><p>Get your car evaluated and payment within 24 hours.</p></div>
+      </div>
+      <div class="sell-benefit">
+        <div class="benefit-icon">📄</div>
+        <div><h4>Hassle-Free Paperwork</h4><p>We handle all the documentation for you.</p></div>
+      </div>
+      <div class="sell-benefit">
+        <div class="benefit-icon">🔒</div>
+        <div><h4>100% Safe & Secure</h4><p>Your data is safe and never shared with third parties.</p></div>
+      </div>
+    </div>
+
+    <!-- Right: Enhanced Multi-Step Form -->
+    <div class="sell-form-right">
+
+      <!-- Step Progress Bar -->
+      <div class="sf-progress">
+        <div class="sf-step active" data-step="1">
+          <div class="sf-step-circle">
+            <span class="sf-step-num">1</span>
+            <svg class="sf-step-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span>Your Info</span>
+        </div>
+        <div class="sf-step-line"></div>
+        <div class="sf-step" data-step="2">
+          <div class="sf-step-circle">
+            <span class="sf-step-num">2</span>
+            <svg class="sf-step-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span>Car Details</span>
+        </div>
+        <div class="sf-step-line"></div>
+        <div class="sf-step" data-step="3">
+          <div class="sf-step-circle">
+            <span class="sf-step-num">3</span>
+            <svg class="sf-step-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span>Confirm</span>
+        </div>
+      </div>
+
+      <form id="sellForm" class="sell-form" novalidate>
+
+        <!-- ── STEP 1: Customer Details ── -->
+        <div class="sf-panel active" id="sfPanel1">
+          <div class="form-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Customer Details
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" id="fg-ownerName">
+              <label for="ownerName">Full Name <span class="req">*</span></label>
+              <div class="input-wrap">
+                <input type="text" id="ownerName" name="owner_name" placeholder="e.g. Rahul Sharma" autocomplete="name" required>
+                <span class="input-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <span class="valid-tick">✔</span>
+              </div>
+              <div class="field-msg" id="err-ownerName"></div>
+            </div>
+
+            <div class="form-group" id="fg-phone">
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <div class="input-wrap">
+                <input type="tel" id="phone" name="phone" placeholder="10-digit mobile" maxlength="10" inputmode="numeric" required>
+                <span class="input-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56A16 16 0 0 0 15.44 16.09l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span class="valid-tick">✔</span>
+              </div>
+              <div class="phone-counter" id="phoneCounter">0 / 10</div>
+              <div class="field-msg" id="err-phone"></div>
+            </div>
+          </div>
+
+          <div class="form-group" id="fg-email">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="email" id="email" name="email" placeholder="example@email.com" autocomplete="email" required>
+              <span class="input-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <span class="valid-tick">✔</span>
+            </div>
+            <div class="field-msg" id="err-email"></div>
+          </div>
+
+          <div class="sf-nav-row">
+            <div></div>
+            <button type="button" class="sf-btn-next" id="btn-next-1">
+              Next: Car Details
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ── STEP 2: Car Details ── -->
+        <div class="sf-panel" id="sfPanel2">
+          <div class="form-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Car Details
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" id="fg-carName">
+              <label for="carName">Car Model <span class="req">*</span></label>
+              <div class="input-wrap">
+                <input type="text" id="carName" name="car_name" placeholder="e.g. Thar 2022" required>
+                <span class="input-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </span>
+                <span class="valid-tick">✔</span>
+              </div>
+              <div class="field-msg" id="err-carName"></div>
+            </div>
+
+            <div class="form-group" id="fg-year">
+              <label for="year">Manufacturing Year <span class="req">*</span></label>
+              <div class="year-input-wrapper">
+                <div class="input-wrap">
+                  <input type="text" id="year" name="year" placeholder="Click to select year" readonly required>
+                  <span class="input-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <span class="valid-tick">✔</span>
+                </div>
+                <div class="year-calendar" id="yearCalendar">
+                  <div class="cal-header">
+                    <button type="button" class="cal-nav" id="calPrev">&#8249;</button>
+                    <span id="calRange"></span>
+                    <button type="button" class="cal-nav" id="calNext">&#8250;</button>
+                  </div>
+                  <div class="year-grid" id="yearGrid"></div>
+                </div>
+              </div>
+              <div class="field-msg" id="err-year"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" id="fg-kmDriven">
+              <label for="kmDriven">KM Driven <span class="req">*</span></label>
+              <div class="input-wrap">
+                <input type="number" id="kmDriven" name="km_driven" placeholder="e.g. 45000" min="0" required>
+                <span class="input-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </span>
+                <span class="valid-tick">✔</span>
+              </div>
+              <div class="field-msg" id="err-kmDriven"></div>
+            </div>
+
+            <div class="form-group" id="fg-expectedPrice">
+              <label for="expectedPrice">Expected Price (₹) <span class="req">*</span></label>
+              <div class="input-wrap">
+                <input type="number" id="expectedPrice" name="expected_price" placeholder="e.g. 800000" min="0" required>
+                <span class="input-icon price-icon">₹</span>
+                <span class="valid-tick">✔</span>
+              </div>
+              <div class="sf-price-hint" id="priceHint"></div>
+              <div class="field-msg" id="err-expectedPrice"></div>
+            </div>
+          </div>
+
+          <div class="form-group" id="fg-description">
+            <label for="description">Additional Details <span class="optional">(optional)</span></label>
+            <div class="input-wrap textarea-wrap">
+              <textarea id="description" name="description" placeholder="Any extra info — service history, accidents, modifications…" rows="3" maxlength="500"></textarea>
+            </div>
+            <div class="textarea-counter"><span id="descCount">0</span> / 500</div>
+          </div>
+
+          <div class="sf-nav-row">
+            <button type="button" class="sf-btn-back" id="btn-back-2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              Back
+            </button>
+            <button type="button" class="sf-btn-next" id="btn-next-2">
+              Review & Confirm
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ── STEP 3: Review & Submit ── -->
+        <div class="sf-panel" id="sfPanel3">
+          <div class="form-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Review Your Details
+          </div>
+
+          <div class="sf-review-card">
+            <div class="sf-review-section">
+              <div class="sf-review-section-title">👤 Customer</div>
+              <div class="sf-review-row"><span>Name</span><strong id="rv-name">—</strong></div>
+              <div class="sf-review-row"><span>Phone</span><strong id="rv-phone">—</strong></div>
+              <div class="sf-review-row"><span>Email</span><strong id="rv-email">—</strong></div>
+            </div>
+            <div class="sf-review-section">
+              <div class="sf-review-section-title">🚗 Car</div>
+              <div class="sf-review-row"><span>Model</span><strong id="rv-car">—</strong></div>
+              <div class="sf-review-row"><span>Year</span><strong id="rv-year">—</strong></div>
+              <div class="sf-review-row"><span>KM Driven</span><strong id="rv-km">—</strong></div>
+              <div class="sf-review-row"><span>Expected Price</span><strong id="rv-price">—</strong></div>
+            </div>
+            <div class="sf-review-section" id="rv-desc-section" style="display:none">
+              <div class="sf-review-section-title">📝 Notes</div>
+              <p id="rv-desc" class="sf-review-desc"></p>
+            </div>
+          </div>
+
+          <div class="sf-terms">
+            <label class="sf-checkbox-label">
+              <input type="checkbox" id="agreeTerms">
+              <span class="sf-checkmark"></span>
+              I confirm the details are accurate and agree to be contacted by AutoDrive.
+            </label>
+            <div class="field-msg" id="err-terms"></div>
+          </div>
+
+          <div class="sf-nav-row">
+            <button type="button" class="sf-btn-back" id="btn-back-3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              Edit Details
+            </button>
+            <button type="submit" class="sf-btn-submit" id="submitBtn">
+              <span class="btn-text">Submit Car →</span>
+              <span class="btn-spinner" style="display:none">
+                <svg class="spin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                Submitting…
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ── SUCCESS STATE ── -->
+        <div class="sf-success" id="sfSuccess" style="display:none">
+
+          <div class="sf-success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+
+          <h3>Car Submitted Successfully!</h3>
+          <p>Your listing has been received. Our team will review your details and contact you within <strong>24 hours</strong> on your registered phone &amp; email.</p>
+
+          <div class="sf-success-info-list">
+            <div class="sf-success-info-item">
+              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="3.5" width="14" height="11" rx="2" stroke="#16a34a" stroke-width="1.5"/>
+                <path d="M2 7h14" stroke="#16a34a" stroke-width="1.5"/>
+                <path d="M5.5 10.5h3M10.5 10.5h2" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Confirmation sent to your email</span>
+            </div>
+            <div class="sf-success-info-item">
+              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="9" cy="9" r="7" stroke="#16a34a" stroke-width="1.5"/>
+                <path d="M9 5.5V9.5L11.5 11.5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Car evaluation within 24 hours</span>
+            </div>
+            <div class="sf-success-info-item">
+              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="5" width="14" height="10" rx="2" stroke="#16a34a" stroke-width="1.5"/>
+                <path d="M6 5V4a3 3 0 0 1 6 0v1" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="9" cy="10" r="1.5" fill="#16a34a"/>
+              </svg>
+              <span>Payment processed within 48 hours</span>
+            </div>
+          </div>
+
+          <div class="sf-success-divider"></div>
+          <div class="sf-success-ref">Reference ID: <strong id="sfRefId"></strong></div>
+          <a href="index.html" class="sf-success-btn">Back to Home</a>
+
+        </div>
+
+      </form>
+    </div><!-- end .sell-form-right -->
+
+  </div><!-- end .sell-form-wrap -->
+</section>
+<!-- end .sell-section -->
+
+
+
+
+<!-- Scripts -->
+<!-- Back to top button -->
+<button id="backToTop" title="Back to top">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="18 15 12 9 6 15"/>
+    </svg>
+</button>
+
+<script src="js/script.js"></script>
+
+<script>
+  
+</script>
+
+<!-- Success Popup -->
+<div class="success-popup" id="successPopup">
+  <div class="success-content">
+    <div class="checkmark">✔</div>
+    <h3 id="successText">Successful!</h3>
+    <p>Our team will contact you shortly.</p>
+  </div>
+</div>
+
+</body>
+</html>
