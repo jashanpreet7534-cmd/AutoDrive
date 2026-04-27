@@ -297,7 +297,7 @@ async function loginUser() {
   setLoading(btnId, true);
 
   try {
-    const res = await fetch("http://localhost:5000/api/auth/login", {
+    const res = await fetch(" https://autodrive-75rh.onrender.com/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
@@ -425,7 +425,7 @@ async function registerUser() {
   setLoading(btnId, true);
 
   try {
-    const res = await fetch("http://localhost:5000/api/auth/register", {
+    const res = await fetch(" https://autodrive-75rh.onrender.com/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, phone, password })
@@ -535,7 +535,7 @@ function initAuthUI() {
 /* 5a. loadCars --------------------------------------------- */
 async function loadCars() {
   try {
-    const response = await fetch("http://localhost:5000/api/cars");
+    const response = await fetch(" https://autodrive-75rh.onrender.com/api/cars");
     const cars     = await response.json();
 
     allCars = cars;
@@ -931,7 +931,7 @@ function initBookingForm() {
     if (!validateBookingForm(data)) return;
 
     try {
-      const res    = await fetch("http://localhost:5000/api/bookings", {
+      const res    = await fetch(" https://autodrive-75rh.onrender.com/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -1476,7 +1476,7 @@ function initSellForm() {
     };
 
     try {
-      const res  = await fetch("http://localhost:5000/api/sell", {
+      const res  = await fetch(" https://autodrive-75rh.onrender.com/api/sell", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -1908,7 +1908,7 @@ function saveProfilePanel() {
 
   // Also update password on backend so next login works
   if (newPass) {
-    fetch('http://localhost:5000/api/auth/change-password', {
+    fetch(' https://autodrive-75rh.onrender.com/api/auth/change-password', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: key, newPassword: newPass })
@@ -2383,7 +2383,7 @@ async function removeBooking(id) {
   // Hit the backend if we have the _id
   if (backendId) {
     try {
-      const res = await fetch(`http://localhost:5000/api/bookings/${backendId}`, {
+      const res = await fetch(` https://autodrive-75rh.onrender.com/api/bookings/${backendId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
       });
