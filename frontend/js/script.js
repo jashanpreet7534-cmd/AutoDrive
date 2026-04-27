@@ -619,7 +619,7 @@ function displayCars(cars) {
     container.innerHTML += `
       <div class="car-card" data-type="${(car.type || "").toLowerCase()}" data-price="${car.price}">
         <div class="car-card-img-wrap">
-          <img src="../${car.image}" alt="${car.name}" onerror="this.src='../images/placeholder.png'">
+          <img src="../${car.image}" alt="${car.name}" onerror="this.src='images/placeholder.png'">
           <button class="save-car-btn ${isSaved ? 'saved' : ''}" onclick="toggleSaveCar(this, '${safeName}', '${car.year || 'N/A'}', '${car.type || 'Car'}', '${car.fuel || 'Petrol'}', '${car.price}', '../${car.image}')" title="${isSaved ? 'Remove from saved' : 'Save car'}">
             <svg viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
@@ -2242,7 +2242,7 @@ function refreshSavedCarsPanel() {
     }
     listEl.innerHTML = saved.map(car => `
       <div class="psp-saved-item">
-        <img src="${car.image}" alt="${car.name}" onerror="this.src='../images/placeholder.png'">
+        <img src="${car.image}" alt="${car.name}" onerror="this.src='images/placeholder.png'">
         <div class="psp-saved-item-info">
           <div class="psp-saved-item-name">${car.name}</div>
           <div class="psp-saved-item-meta">
@@ -2586,7 +2586,7 @@ function renderDrawerSaved(body) {
   }
   body.innerHTML = saved.map(car => `
     <div class="drawer-card drawer-saved-card">
-      <img src="${car.image}" alt="${car.name}" onerror="this.src='../images/placeholder.png'">
+      <img src="${car.image}" alt="${car.name}" onerror="this.src='images/placeholder.png'">
       <div class="drawer-card-info">
         <div class="drawer-card-name">${car.name}</div>
         <div class="drawer-card-meta">
@@ -2734,8 +2734,8 @@ function sendPushNotification(title, body) {
   try {
     new Notification(title, {
       body,
-      icon:    '../images/logo.png',
-      badge:   '../images/logo.png',
+      icon:    'images/logo.png',
+      badge:   'images/logo.png',
       tag:     'autodrive-booking',
       vibrate: [200, 100, 200]
     });
