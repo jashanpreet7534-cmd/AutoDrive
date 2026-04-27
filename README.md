@@ -467,7 +467,23 @@ require('dotenv').config();
 Add `.env` to `.gitignore` — never commit credentials to version control.
 
 ---
+SCREENSHOOTS: 
+<img width="947" height="449" alt="Image" src="https://github.com/user-attachments/assets/bc0b447a-15c0-4157-8284-2cf5004fc107" />
+<img width="943" height="451" alt="Image" src="https://github.com/user-attachments/assets/d68fc064-0356-4647-afa3-f2f54e50b6b0" />
+<img width="947" height="452" alt="Image" src="https://github.com/user-attachments/assets/3bbf2807-0c47-4aa3-8e59-18c5285b99d5" />
+<img width="943" height="446" alt="Image" src="https://github.com/user-attachments/assets/9501eace-fbb1-4c78-896b-230d8d8b17ad" />
+<img width="943" height="453" alt="Image" src="https://github.com/user-attachments/assets/d6f9002e-b1fa-4b9a-996c-53142bf712fb" />
+<img width="948" height="452" alt="Image" src="https://github.com/user-attachments/assets/5e9221d8-58fa-4941-8ddd-7b11669dee3f" />
+<img width="950" height="447" alt="Image" src="https://github.com/user-attachments/assets/22a17932-cba2-43c4-b736-802893484e45" />
+<img width="945" height="443" alt="Image" src="https://github.com/user-attachments/assets/87165525-23b9-4283-93bb-1be497152458" />
+<img width="940" height="449" alt="Image" src="https://github.com/user-attachments/assets/7069b05e-7c9e-4bde-811a-2c36b2904018" />
+<img width="947" height="445" alt="Image" src="https://github.com/user-attachments/assets/05cfd186-79ef-424c-9bfe-0a78984cf620" />
+<img width="945" height="447" alt="Image" src="https://github.com/user-attachments/assets/4b5641ad-1e41-4d27-b8d4-46fb96fcb953" />
+<img width="945" height="452" alt="Image" src="https://github.com/user-attachments/assets/02926496-3eaa-45fa-a645-6f262cb69c6a" />
+<img width="942" height="446" alt="Image" src="https://github.com/user-attachments/assets/2e862ef9-d319-4ab5-b93a-995154422654" />
+<img width="944" height="448" alt="Image" src="https://github.com/user-attachments/assets/7be2f9a0-b6c0-4eed-9fd7-dba946bb9a22" />
 
+<img width="947" height="446" alt="Image" src="https://github.com/user-attachments/assets/4d5a02a5-4fe1-4c37-81d8-62ddfdc65aa4" />
 ## Key Design Decisions
 
 **No frontend framework** — the entire frontend is vanilla JavaScript. This keeps the bundle size zero, page loads instant, and the codebase easy to read without build tools.
